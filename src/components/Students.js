@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 const Students = () => {
   const url = 'https://api.hatchways.io/assessment/students'
   const [students, setStudents] = useState([]);
+  const [search, setSearch] = useState('');
+  const [filteredStudents, setFilteredStudents] = useState([]);
 
   useEffect(() => {
     fetch(url)
@@ -16,6 +18,15 @@ const Students = () => {
 
   }, [])
 
+  useEffect(() => {
+    setFilteredStudents(
+      students.filter(student => {
+        return student.firstName.toLowerCase().includes(search.toLowerCase())
+          || student.lastName.toLowerCase().includes(search.toLowerCase());
+      })
+    )
+  }, [search, students])
+
   return (
     <div className="row Student-container">
       <div>
@@ -24,10 +35,11 @@ const Students = () => {
             type="text"
             placeholder="Search by name"
             id="Search-input"
+            onChange={e => setSearch(e.target.value)}
           />
         </form>
       </div>
-      {students.map((student) => (
+      {filteredStudents.map((student) => (
         <div key={student.id} className="Flex">
           <div className="Img-div col-md-6 Student-info">
             <img alt="avatar" src={student.pic} />
