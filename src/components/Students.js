@@ -6,6 +6,7 @@ const Students = () => {
   const [students, setStudents] = useState([]);
   const [search, setSearch] = useState('');
   const [filteredStudents, setFilteredStudents] = useState([]);
+  const [isExpanded, setIsExpanded] = useState([]);
 
   useEffect(() => {
     fetch(url)
@@ -16,7 +17,7 @@ const Students = () => {
         }
       )
 
-  }, [])
+  }, []);
 
   useEffect(() => {
     setFilteredStudents(
@@ -25,7 +26,17 @@ const Students = () => {
           || student.lastName.toLowerCase().includes(search.toLowerCase());
       })
     )
-  }, [search, students])
+  }, [search, students]);
+
+  const toggleExpand = (id) => {
+    if (isExpanded.includes(id)) {
+      setIsExpanded(isExpanded.filter(studentId => studentId !== id))
+    } else {
+      let newExpanded = [...isExpanded]
+      newExpanded.push(id)
+      setIsExpanded(newExpanded)
+    }
+  }
 
   return (
     <div className="row Student-container">
@@ -44,16 +55,27 @@ const Students = () => {
           <div className="Img-div col-md-6 Student-info">
             <img alt="avatar" src={student.pic} />
           </div>
-          <div className="Info-div col-md-6 Student-info">
-            <h1 className="Name">{student.firstName} {student.lastName}</h1>
-            <p>&nbsp;&nbsp; Email: {student.email}</p>
-            <p>&nbsp;&nbsp; Company: {student.company}</p>
-            <p>&nbsp;&nbsp; Skill: {student.skill}</p>
-            <p>&nbsp;&nbsp; Average: {(student.grades.reduce((a, b) => parseInt(b) + a, 0))
-              / (student.grades.map((grade) => grade).length)}%
-            </p>
-          </div>
 
+          <div className="Info-div col-md-6 Student-info">
+
+            <h1 className="Name">{student.firstName.toUpperCase()} {student.lastName.toUpperCase()}</h1>
+
+
+            <ul className="Info-list">
+              <li>Email: {student.email}</li>
+              <li>Company: {student.company}</li>
+              <li>Skill: {student.skill}</li>
+              <li>Average: {(student.grades.reduce((a, b) => parseInt(b) + a, 0))
+                / (student.grades.map((grade) => grade).length)}%
+              </li>
+            </ul>
+            {isExpanded.includes(student.id) ? (
+              <div className="Grades">
+                {student.grades.map((grade, index) => <li key={grade.id}>Test {index + 1}:<span>{grade}%</span></li>)}
+              </div>
+            ) : null}
+          </div>
+          <button className="Expand-btn" onClick={() => toggleExpand(student.id)}>{isExpanded.includes(student.id) ? '-' : '+'}</button>
         </div>
       ))}
 

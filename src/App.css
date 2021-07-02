@@ -16,6 +16,11 @@
   line-height: 0.75rem;
 }
 
+.Info-list {
+  list-style: none;
+  line-height: 1.5rem;
+}
+
 .Flex{
   display: flex;
   width: 100%;
@@ -29,7 +34,6 @@ img {
   margin: 2rem;
   margin-right: 14rem;
   border: 1px solid gray;
-
   border-radius: 50%;
 }
 
@@ -43,5 +47,20 @@ img {
   border: none;
   border-bottom: 1px solid gray;
   padding: 1rem;
+}
 
+.Expand-btn {
+  position: absolute;
+  top:0;
+  right: 1rem
+}
+
+.Grades {
+  line-height: 1.5rem;
+  list-style: none;
+  margin-left: 2rem;
+}
+
+span, p {
+  margin-left: 1.5rem;
 }
