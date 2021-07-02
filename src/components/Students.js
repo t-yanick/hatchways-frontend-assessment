@@ -17,19 +17,23 @@ const Students = () => {
   }, [])
 
   return (
-    <div>
+    <div className="row Student-container">
       {students.map((student) => (
-        <React.Fragment key={student.id}>
-          <img alt="" src={student.pic} />
-          <h1>{student.firstName} {student.lastName}</h1>
-          <p>Email:{student.email}</p>
-          <p>Company:{student.company}</p>
-          <p>Skill:{student.skill}</p>
-          <p>Average: {(student.grades.reduce((a, b) => parseInt(b) + a, 0))
-            / (student.grades.map((grade) => grade).length)}%
-                </p>
+        <div key={student.id} className="Flex">
+          <div className="Img-div col-md-6 Student-info">
+            <img alt="avatar" src={student.pic} />
+          </div>
+          <div className="Info-div col-md-6 Student-info">
+            <h1 className="Name">{student.firstName} {student.lastName}</h1>
+            <p>&nbsp;&nbsp; Email:{student.email}</p>
+            <p>&nbsp;&nbsp; Company:{student.company}</p>
+            <p>&nbsp;&nbsp; Skill:{student.skill}</p>
+            <p>&nbsp;&nbsp; Average: {(student.grades.reduce((a, b) => parseInt(b) + a, 0))
+              / (student.grades.map((grade) => grade).length)}%
+            </p>
+          </div>
 
-        </React.Fragment>
+        </div>
       ))}
 
     </div>
