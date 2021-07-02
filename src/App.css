@@ -3,7 +3,7 @@
 }
 
 .Student-info {
-  border-bottom: 1px solid rgb(202, 202, 202);
+  border-bottom: 1px solid gray;
   width:95%;
 }
 
@@ -28,10 +28,20 @@ img {
   width: 8rem;
   margin: 2rem;
   margin-right: 14rem;
-  border: 1px solid rgb(202, 202, 202);
+  border: 1px solid gray;
+
   border-radius: 50%;
 }
 
 .Name {
   margin-bottom: 1rem;
+}
+
+#Search-input{
+  width: 98%;
+  margin: 1rem;
+  border: none;
+  border-bottom: 1px solid gray;
+  padding: 1rem;
+
 }
