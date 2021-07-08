@@ -64,3 +64,10 @@ img {
 span, p {
   margin-left: 1.5rem;
 }
+
+.Add-tag {
+  margin-left: 1.5rem;
+  border: none;
+  border-bottom: 2px solid gray;
+  margin-bottom: 1rem;
+}

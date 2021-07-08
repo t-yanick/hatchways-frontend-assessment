@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import OnEvent from 'react-onevent';
 // import axios from 'axios';
 
 const Students = () => {
@@ -7,6 +8,8 @@ const Students = () => {
   const [search, setSearch] = useState('');
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [isExpanded, setIsExpanded] = useState([]);
+  const [addTag, setAddTag] = useState('');
+  const [tagName, setTagName] = useState('');
 
   useEffect(() => {
     fetch(url)
@@ -38,6 +41,22 @@ const Students = () => {
     }
   }
 
+  // useEffect(() => {
+  //   setAddTag(
+
+  //   )
+  // }, []);
+
+  function handleChange(event) {
+    setTagName(event.target.value)
+  }
+
+  function handleAdd() {
+    const tagList = addTag.concat({ tagName });
+
+    setAddTag(tagList);
+  }
+
   return (
     <div className="row Student-container">
       <div>
@@ -47,6 +66,12 @@ const Students = () => {
             placeholder="Search by name"
             id="Search-input"
             onChange={e => setSearch(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Search by tag"
+            id="Search-input"
+          // onChange={e => setSearch(e.target.value)}
           />
         </form>
       </div>
@@ -74,6 +99,27 @@ const Students = () => {
                 {student.grades.map((grade, index) => <li key={grade.id}>Test {index + 1}:<span>{grade}%</span></li>)}
               </div>
             ) : null}
+
+            {/* {addTag.map((item) => (
+              <li key={item.id}>{item.tagName}</li>
+            ))} */}
+
+            <OnEvent space={(event) => handleAdd(event.target.value)}>
+              <form>
+                <input
+                  className="Add-tag"
+                  type="text"
+                  value={tagName}
+                  onChange={handleChange}
+                  placeholder="Add a tag"
+                />
+                {/* <ul>
+                  {addTag.map((item) => (
+                    <li key={item.id}>{item.tagName}</li>
+                  ))}
+                </ul> */}
+              </form>
+            </OnEvent>
           </div>
           <button className="Expand-btn" onClick={() => toggleExpand(student.id)}>{isExpanded.includes(student.id) ? '-' : '+'}</button>
         </div>
