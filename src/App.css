@@ -51,8 +51,12 @@ img {
 
 .Expand-btn {
   position: absolute;
-  top:0;
-  right: 1rem
+  /* top:0; */
+  right: 1rem;
+  border: none;
+  font-size: 4rem;
+  background-color: #ffffff;
+  color: gray;
 }
 
 .Grades {
@@ -70,4 +74,13 @@ span, p {
   border: none;
   border-bottom: 2px solid gray;
   margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.Tags {
+  margin-top: 0.5rem;
+  margin-left: 2rem;
+  /* background-color: gray; */
+  width: 50px;
+  height: 1rem;
 }
