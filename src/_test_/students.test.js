@@ -7,8 +7,8 @@ import Students from '../components/Students';
 describe('Creates a component', () => {
   it('renders correctly', () => {
     const tree = renderer.create(
-      <Students />
+      <Students />,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
-})
+});

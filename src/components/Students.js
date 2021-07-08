@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import OnEvent from 'react-onevent';
 
 const Students = () => {
-  const url = 'https://api.hatchways.io/assessment/students'
+  const url = 'https://api.hatchways.io/assessment/students';
   const [students, setStudents] = useState([]);
   const [search, setSearch] = useState('');
   const [filteredStudents, setFilteredStudents] = useState([]);
@@ -12,36 +12,33 @@ const Students = () => {
 
   useEffect(() => {
     fetch(url)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
         (results) => {
           setStudents(results.students);
-        }
-      )
-
+        },
+      );
   }, []);
 
   useEffect(() => {
     setFilteredStudents(
-      students.filter(student => {
-        return student.firstName.toLowerCase().includes(search.toLowerCase())
-          || student.lastName.toLowerCase().includes(search.toLowerCase());
-      })
-    )
+      students.filter((student) => student.firstName.toLowerCase().includes(search.toLowerCase())
+        || student.lastName.toLowerCase().includes(search.toLowerCase())),
+    );
   }, [search, students]);
 
   const toggleExpand = (id) => {
     if (isExpanded.includes(id)) {
-      setIsExpanded(isExpanded.filter(studentId => studentId !== id))
+      setIsExpanded(isExpanded.filter((studentId) => studentId !== id));
     } else {
-      let newExpanded = [...isExpanded]
-      newExpanded.push(id)
-      setIsExpanded(newExpanded)
+      const newExpanded = [...isExpanded];
+      newExpanded.push(id);
+      setIsExpanded(newExpanded);
     }
-  }
+  };
 
   function handleChange(event) {
-    setTagName(event.target.value)
+    setTagName(event.target.value);
   }
 
   function handleAdd() {
@@ -58,19 +55,19 @@ const Students = () => {
             type="text"
             placeholder="Search by name"
             id="Search-input"
-            onChange={e => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
           />
           <input
             type="text"
             placeholder="Search by tag"
             id="Search-input"
-            onChange={e => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </form>
       </div>
       {filteredStudents.map((student) => (
         <div key={student.id} className="Flex">
-          <button className="Expand-btn" onClick={() => toggleExpand(student.id)}>{isExpanded.includes(student.id) ? '-' : '+'}</button>
+          <button type="button" className="Expand-btn" onClick={() => toggleExpand(student.id)}>{isExpanded.includes(student.id) ? '-' : '+'}</button>
 
           <div className="Img-div col-md-6 Student-info">
             <img alt="avatar" src={student.pic} />
@@ -78,20 +75,45 @@ const Students = () => {
 
           <div className="Info-div col-md-6 Student-info">
 
-            <h1 className="Name">{student.firstName.toUpperCase()} {student.lastName.toUpperCase()}</h1>
-
+            <h1 className="Name">
+              {student.firstName.toUpperCase()}
+              {' '}
+              {student.lastName.toUpperCase()}
+            </h1>
 
             <ul className="Info-list">
-              <li>Email: {student.email}</li>
-              <li>Company: {student.company}</li>
-              <li>Skill: {student.skill}</li>
-              <li>Average: {(student.grades.reduce((a, b) => parseInt(b) + a, 0))
-                / (student.grades.map((grade) => grade).length)}%
+              <li>
+                Email:
+                {student.email}
+              </li>
+              <li>
+                Company:
+                {student.company}
+              </li>
+              <li>
+                Skill:
+                {student.skill}
+              </li>
+              <li>
+                Average:
+                {(student.grades.reduce((a, b) => parseInt(b, 10) + a, 0))
+                  / (student.grades.map((grade) => grade).length)}
+                %
               </li>
             </ul>
             {isExpanded.includes(student.id) ? (
               <div className="Grades">
-                {student.grades.map((grade, index) => <li key={grade.id}>Test {index + 1}:<span>{grade}%</span></li>)}
+                {student.grades.map((grade, index) => (
+                  <li key={grade.id}>
+                    Test
+                    {index + 1}
+                    :
+                    <span>
+                      {grade}
+                      %
+                    </span>
+                  </li>
+                ))}
               </div>
             ) : null}
 
@@ -115,8 +137,7 @@ const Students = () => {
       ))}
 
     </div>
-  )
+  );
 };
-
 
 export default Students;
