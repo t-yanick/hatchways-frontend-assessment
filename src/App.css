@@ -4,7 +4,7 @@
 
 .Student-info {
   border-bottom: 1px solid gray;
-  width:95%;
+  width: 95%;
 }
 
 .Img-div {
@@ -21,11 +21,10 @@
   line-height: 1.5rem;
 }
 
-.Flex{
+.Flex {
   display: flex;
   width: 100%;
   overflow-x: hidden;
-
 }
 
 img {
@@ -41,7 +40,7 @@ img {
   margin-bottom: 1rem;
 }
 
-#Search-input{
+#Search-input {
   width: 98%;
   margin: 1rem;
   border: none;
@@ -51,11 +50,10 @@ img {
 
 .Expand-btn {
   position: absolute;
-  /* top:0; */
   right: 1rem;
   border: none;
   font-size: 4rem;
-  background-color: #ffffff;
+  background-color: #fff;
   color: gray;
 }
 
@@ -65,7 +63,8 @@ img {
   margin-left: 2rem;
 }
 
-span, p {
+span,
+p {
   margin-left: 1.5rem;
 }
 
@@ -80,7 +79,7 @@ span, p {
 .Tags {
   margin-top: 0.5rem;
   margin-left: 2rem;
-  /* background-color: gray; */
+  background-color: gray;
   width: 50px;
   height: 1rem;
 }
