@@ -37,35 +37,14 @@ const Students = () => {
     }
   };
 
-  // function handleChange(event) {
-  //   setTagName(event.target.value);
-  // }
-
   function handleChange(event) {
     setTagName(event.target.value);
   }
 
-  function handleAdd(id) {
-    const tagList = addTag.students.map(student => {
-      if (student.id === id) {
-        const tagList = addTag.concat({ tagName });
-        setAddTag(tagList);
+  function handleAdd() {
+    const tagList = addTag.concat({ tagName });
 
-      }
-    })
-
-    // const tagList = addTag.students.map(student => {
-    //   if (student.id === id) {
-    //     return {
-    //       ...student,
-    //       tagName
-    //     }
-    //     return tagList
-    //   }
-    //   setAddTag(tagList)
-    // })
-
-    // setAddTag(tagList);
+    setAddTag(tagList);
   }
 
   return (

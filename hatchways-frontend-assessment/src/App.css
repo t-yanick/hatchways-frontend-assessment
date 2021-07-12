@@ -1,0 +1,85 @@
+.Student-container {
+  padding-top: 2rem;
+}
+
+.Student-info {
+  border-bottom: 1px solid gray;
+  width: 95%;
+}
+
+.Img-div {
+  width: 20%;
+}
+
+.Info-div {
+  margin-right: 30rem;
+  line-height: 0.75rem;
+}
+
+.Info-list {
+  list-style: none;
+  line-height: 1.5rem;
+}
+
+.Flex {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  height: 8rem;
+  width: 8rem;
+  margin: 2rem;
+  margin-right: 14rem;
+  border: 1px solid gray;
+  border-radius: 50%;
+}
+
+.Name {
+  margin-bottom: 1rem;
+}
+
+#Search-input {
+  width: 98%;
+  margin: 1rem;
+  border: none;
+  border-bottom: 1px solid gray;
+  padding: 1rem;
+}
+
+.Expand-btn {
+  position: absolute;
+  right: 1rem;
+  border: none;
+  font-size: 4rem;
+  background-color: #fff;
+  color: gray;
+}
+
+.Grades {
+  line-height: 1.5rem;
+  list-style: none;
+  margin-left: 2rem;
+}
+
+span,
+p {
+  margin-left: 1.5rem;
+}
+
+.Add-tag {
+  margin-left: 1.5rem;
+  border: none;
+  border-bottom: 2px solid gray;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.Tags {
+  margin-top: 0.5rem;
+  margin-left: 2rem;
+  background-color: gray;
+  width: 50px;
+  height: 1rem;
+}
